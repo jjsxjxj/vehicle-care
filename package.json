@@ -1,0 +1,12 @@
+{
+  "name": "vehicle-care",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "基于 Cloudflare Workers + D1 的多用户车辆保养记录与到期提醒系统",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init": "wrangler d1 execute vehicle-care-db --remote --file=schema.sql"
+  }
+}

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3f5f9" id="themeColor">
+<title>车辆保养助手</title>
+<script>
+/* 必须在样式表之前跑：先定主题再渲染，避免首屏闪白/闪黑。 */
+(function () {
+  var LIGHT = '#f3f5f9', DARK = '#0a1929';
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  function resolve() {
+    var saved = null;
+    try { saved = localStorage.getItem('vc_theme'); } catch (e) {}
+    if (saved === 'light' || saved === 'dark') return saved;
+    return mq.matches ? 'dark' : 'light';
+  }
+  function apply() {
+    var t = resolve();
+    document.documentElement.setAttribute('data-theme', t);
+    var m = document.getElementById('themeColor');
+    if (m) m.setAttribute('content', t === 'dark' ? DARK : LIGHT);
+  }
+  window.__vcApplyTheme = apply;
+  apply();
+  try { mq.addEventListener('change', apply); } catch (e) { mq.addListener(apply); }
+})();
+</script>
+<link rel="stylesheet" href="/style.css?v=20260922a">
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <div class="sb-brand">
+    <span class="sb-logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+           stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2.6l7 3v5.6c0 4.3-2.9 8.2-7 9.2-4.1-1-7-4.9-7-9.2V5.6z"/>
+        <path d="M8.6 12.1l2.3 2.3 4.5-4.6"/>
+      </svg>
+    </span>
+    车辆保养助手
+  </div>
+  <button data-tab="board"><span class="ico">◎</span>看板</button>
+  <button data-tab="upload"><span class="ico">＋</span>上传</button>
+  <button data-tab="records"><span class="ico">≡</span>记录</button>
+  <button data-tab="settings"><span class="ico">⚙</span>设置</button>
+  <button data-tab="admin" id="adminSideBtn" style="display:none"><span class="ico">◈</span>管理</button>
+</aside>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+             stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2.6l7 3v5.6c0 4.3-2.9 8.2-7 9.2-4.1-1-7-4.9-7-9.2V5.6z"/>
+          <path d="M8.6 12.1l2.3 2.3 4.5-4.6"/>
+        </svg>
+      </span>
+      <h1 id="title">车辆保养助手</h1>
+      <div class="sub" id="subtitle">上传保养单据，自动归档并到期提醒</div>
+      <ul class="brand-feats">
+        <li>上传维修保养截图，AI 自动识别并归类</li>
+        <li>按周期推算下次保养，到期自动推送提醒</li>
+        <li>多账号相互独立，各自配置、互不可见</li>
+      </ul>
+    </div>
+    <button class="btn sm ghost" id="logoutBtn" style="display:none">退出</button>
+  </div>
+</div>
+
+<div class="page" id="view"></div>
+
+<nav class="tabbar" id="tabbar" style="display:none">
+  <button data-tab="board"><span class="ico">◎</span>看板</button>
+  <button data-tab="upload"><span class="ico">＋</span>上传</button>
+  <button data-tab="records"><span class="ico">≡</span>记录</button>
+  <button data-tab="settings"><span class="ico">⚙</span>设置</button>
+  <button data-tab="admin" id="adminTabBtn" style="display:none"><span class="ico">◈</span>管理</button>
+</nav>
+
+<script src="/app.js?v=20260922a"></script>
+</body>
+</html>

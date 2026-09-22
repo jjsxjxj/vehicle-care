@@ -1,0 +1,27 @@
+name = "vehicle-care"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "none"
+
+[[routes]]
+pattern = "by.813146.xyz"
+custom_domain = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "vehicle-care-db"
+database_id = "99f0e8cf-f839-4099-beac-91dcca2bc77b"
+
+[ai]
+binding = "AI"
+
+[triggers]
+crons = ["0 1 * * *"]
+
+[observability]
+enabled = true
