@@ -655,12 +655,6 @@ body.modal-open { overflow: hidden; }
 }
 @keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
 
-/* 底部弹层那条「小横杠」：弹窗统一居中后它没有意义了，直接不显示 */
-.sheet-grip {
-  width: 38px; height: 4px; border-radius: 999px;
-  background: var(--line-strong); margin: 6px auto 16px;
-  display: none;
-}
 .sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
 .sheet-head b { font-size: 18px; }
 

@@ -1349,7 +1349,6 @@ function openMonthSheet() {
   // 否则年历会去算 '-01'、'-02' 这种空月份，一格都不亮。
   const curYear = () => String(state.recordsYear || String(state.recordsMonth || localToday()).slice(0, 4));
   const wrap = buildModal(
-    '<div class="sheet-grip" aria-hidden="true"></div>' +
     '<div class="sheet-head"><b>选择月份</b>' +
     '<span style="display:flex;gap:6px;align-items:center">' +
     `<button class="btn sm ${state.recordsMonth ? 'ghost' : 'primary'}" data-act="all">全部月份</button>` +
